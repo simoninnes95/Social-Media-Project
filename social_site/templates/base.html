@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Space Social</title>
+    <!-- Bootstrap Link -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Condensed&display=swap" rel="stylesheet">
+
+    <!-- font-family: 'Roboto Condensed', sans-serif;
+    font-family: 'Roboto', sans-serif; -->
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="{% static 'social_site/css/master.css' %}">
+  </head>
+  <body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light mynav" id="navbar" role="navigation">
+      <div class="container">
+        <a class="navbar-brand mynav"href="{% url 'home' %}">Space Social</a>
+
+        <ul class="nav navbar-nav navbar right">
+          {% if user.is_authenticated %}
+            <li><a href="#">Post</a></li>
+            <li><a href="#">Groups</a></li>
+            <li><a href="#">Create Group</a></li>
+            <li><a href="{% url 'accounts:logout' %}">Log Out</a></li>
+          {% else %}
+            <li><a href="#">Groups</a></li>
+            <li><a href="{% url 'accounts:login' %}">Log In</a></li>
+            <li><a href="{% url 'accounts:signup' %}">Sign Up</a></li>
+          {% endif %}
+
+        </ul>
+
+      </div>
+    </nav>
+
+    <div class="container mycontent">
+      {% block content %}
+
+      {% endblock %}
+    </div>
+
+  </body>
+</html>
