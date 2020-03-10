@@ -1,7 +1,8 @@
 {% extends "groups/group_base.html" %}
 
 {% block pregroup %}
-<h1>{{group.name}}</h1> #group is the view (lower case) and name is from the class based view in django
+{# group is the view (lower case) and name is from the class based view in django #}
+<h1>{{group.name}}</h1>
 <h2>Member count: {{group.members.count}}</h2>
 
 <div class="content">
